@@ -2,7 +2,9 @@
 title: "Covid91 vaccine study Final2020"
 author: "Emraida S Ortanez"
 date: "November 18, 2020"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 ```{r include=FALSE,echo=FALSE}
@@ -37,10 +39,15 @@ dataF<- filter(FinalData, sex=="gal")
 ```{r}
 barchartGC(~infected + treatment,data=dataF)
 barchartGC(~infected + treatment,data=dataF, type="percent",main="females")
-
 ```
-
   
+By comparing the gals who still have covid and who got well after treatment, gals who have still sick are less than the gals who got well.  Therefore, more gals got well after taking both treatment, drug and placebo.    
+According to the graph, there are more gals who got well after taking the drug than placebo. About 4500 gals got well after taking the drug and about 4400 got well after taking the placebo. And also, there are few gals who got sick after taking drug than the gals who took placebo. About 250 gals got sick after taking the drug and about 500 got sick after taking placebo.
+Therefore can be concluded that the new preventative vaccine is somewhat effective on the gals.  
+  
+When comparing the percentage of the effect of treatment on the gals who got well, the gals who got the drug are a little higher than the gals who got placebo around 50%. On the other hand, when comparing the gals who still have covid, there is less percentage of   gals who got drug, about 33% , than the gals who got placebo, about 70%. The overall drug tends to heal the gals over the gals who   got a placebo.  
+   
+    
 ###Numerical Summaries  for Gals
 
 ```{r}
@@ -48,6 +55,11 @@ table1 <- xtabs(~infected + treatment, data=dataF)
 rowPerc(table1)
 colPerc(table1)
 ```
+    
+Among the gals who still have covid after the treatment, there are 33.11% drug users and 66.89% placebo users. And also, among the gals who got well after the treatment, there are 50.31% drug users and 49.69% placebo users. Overall, having a drug tends to heal more gals than a placebo.    
+Among the gals who got drug as the treatment, there are 4.44% gals who still have covid and 95.56% who got well. And also, among the gals who got placebo as the treatment, there are 8.67 % gals who still have covid and 91.33% who got well.
+Therefore, drug is more tends to heal the gals than a placebo.  
+      
 ##Inferential  results for Gals
 
 ```{r}
@@ -55,58 +67,206 @@ chisq.test(table1)
 chisqtestGC(table1)
 fisher.test(table1)
 ```
+    
+Hypothesis on Chi-Square test :  
 
+       H0 : There is no relationship between treatment and infected among gals   
+       Ha : There is a relationship between treatment and infected among gals  
+
+Since the p-value (=0) < 0.05, reject H0 at 5% significant level.
+Therefore at 5% significance level we can conclude that there is a relationship between treatment and infected among gals.
+
+Hypothesis on Fishers test :  
+
+       H0 : Probability of getting cured is the same whether gal received a drug or placebo (True odd ratio is equal to 1)  
+       Ha : Probability of getting cured is not same whether gal received a drug or placebo (True odd ratio is not equal to 1)  
+
+Since the p-value (<2.2e-16) < 0.05, reject H0 at 5% significant level.  
+Therefore at 5% significance level we can conclude that the true odd ration is not equal to 1. That means probability of getting cured is not same whether gal received a drug or placebo  
 
 ```{r}
-dataF<- filter(FinalData, sex=="guy")
+dataM<- filter(FinalData, sex=="guy")
 ```
 
 ### Graphical Results for Guys
 ```{r}
-barchartGC(~infected + treatment,data=dataF)
-barchartGC(~infected + treatment,data=dataF, type="percent",main="males")
+barchartGC(~infected + treatment,data=dataM)
+barchartGC(~infected + treatment,data=dataM, type="percent",main="males")
 
 ```
+    
+By comparing the guys who still have covid and who got well after treatment, guys who have still sick are less than the guys who got well. Therefore, more guys got well after taking both treatment, drug and placebo.  
+According to the graph, there are more gals who got well after taking placebo than the drug. About 5500 guys got well after taking placebo and about 5000 got well after taking the drug. And also, there are few guys who got sick after taking placebo than the guys who took the drug. About 150 guys got sick after taking placebo and about 200 got sick after taking the drug.
+Therefore, can be concluded that the new preventative vaccine somewhat does not effect on the guys.     
+ 
+When comparing the percentage of the effect of treatment on the guys who got well, the guys who got the placebo are higher than the guys who got the drug. Because there are about 48% of guys who got drug and about 52% of guys who got placebo among the guys who got well.  
+On the other hand, when comparing the guys who still have covid, there are less percentage of guys who got placebo, about 40% , than the guys who got drug, about 58%.
+Overall placebo tends to heal the guys over the guys who got the drug. Therefore, it seems to be there is no effect from the new preventative vaccine on the guys.       
 
 ###Numerical Summaries  for Guys
 ```{r}
-table1 <- xtabs(~infected + treatment, data=dataF)
+table1 <- xtabs(~infected + treatment, data=dataM)
 rowPerc(table1)
 colPerc(table1)
 ```
-
-
+    
+Among the guys who still have covid after the treatment, there are 58.16% drug users and 41.84% placebo users. And also, among the guys who got well after the treatment, there are 48.54% drug users and 51.46% placebo users. Then, placebo users more tend to heal than drug users among the guys. Therefore, there is no effective drug effect can be seen among guys.      
+Among the guys who got drug as the treatment, there are 3.72% of guys who still have covid and 96.28% who got well.  
+And also, among the guys who got placebo as the treatment, there are 2.55 % guys who still have covid and 97.45% who got well.  
+The percentages of guys who got well after the treatment are higher than the percentage of guys who still have covid, and the   difference between percentages is higher among the placebo used guys than the drug used guys.  
+Therefore, placebo is more tend to heal the guys than the drug. Hence, there is no effective drug effect can be seen among guys.  
+    
 ##Inferential  results for Guys
 ```{r}
 chisq.test(table1)
 chisqtestGC(table1)
 fisher.test(table1)
 ```
+  
+Hypothesis on Chi-Square test :  
 
+       H0 : There is no relationship between treatment and infected among guys    
+       Ha : There is a relationship between treatment and infected among guys  
+  
+Since the p-value (=0.0006181) < 0.05, reject H0 at 5% significant level.  
+Therefore at 5% significance level we can conclude that there is a relationship between treatment and infected among guys.      
+The odds of a guy getting Covid if he takes the drug is almost  1.5 greater than if he takes the placebo   
+  
+Hypothesis on Fishers test :  
+
+       H0 : Probability of getting cured is the same whether guy received a drug or placebo   
+       (True odd ratio is equal to 1)  
+       Ha : Probability of getting cured is not same whether guy received a drug or placebo   
+       (True odd ratio is not equal to 1)  
+  
+Since the p-value ( = 0.0005801) < 0.05, reject H0 at 5% significant level.
+Therefore at 5% significance level we can conclude that the true odd ration is not equal to 1. That means probability of getting cured is not same whether guy received a drug or placebo.   
+  
+```{r}
+LGBTQData<- filter(FinalData, LGBTQ =="gay")
+```
 
 
 ### Graphical Results for LGBTQ
 
-
-
+```{r}
+barchartGC(~infected + treatment,data=LGBTQData)
+barchartGC(~infected + treatment,data=LGBTQData, type="percent")
+```  
+    
+When comparing the percentage of the effect of treatment on the LGBTQ people who got well after the treatment, the LGBTQ people who got the placebo are somewhat higher than the LGBTQ people who got the drug. Because there are about 50% of LGBTQ people who got drug and about 52% of LGBTQ people who got placebo.
+On the other hand, when comparing the LGBTQ people who still have covid, can observe a significant difference. There is less percentage of LGBTQ people who got placebo, about 30% , than the LGBTQ people who got drug, about 75%.
+Overall placebo tends to heal the LGBTQ people over the LGBTQ people who got the drug. Therefore, it seems to be there is no effect from the new preventative vaccine on the LGBTQ community. 
+    
 ###Numerical Summaries  for LGBTQ
-
-
-
+  
+```{r}
+table1 <- xtabs(~infected + treatment, data=LGBTQData)
+rowPerc(table1)
+colPerc(table1)
+```
+Among the LGBTQ community who still have covid after the treatment, there are 70.69% drug users and 29.31% placebo users.  
+And also, among the LGBTQ community who got well after the treatment, there are 49.17% drug users and 50.83% placebo users. Then,   placebo users more tend to heal than the drug users among the LGBTQ community. Therefore, there is no effective drug effect can be   seen among LGBTQ community.      
+Among the LGBTQ community who got drug as the treatment, there are 7.97% LGBTQ people who still have covid and 92.03% who got well.  
+And also, among the LGBTQ community who got placebo as the treatment, there are 3.36 % LGBTQ people who still have covid and 96.64%  who got well.  
+The percentages of LGBTQ people who got well after the treatment is higher than the percentage of LGBTQ people who still have covid, and the difference between percentages is higher among the placebo used LGBTQ people than the drug used LGBTQ people.  
+Therefore, placebo is more tend to heal the LGBTQ people than the drug. Hence, there is no effective drug effect can be seen among   LGBTQ people.           
+          
+    
 ##Inferential  results for LGBTQ
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+      
+Hypothesis on Chi-Square test :  
+
+      H0 : There is no relationship between treatment and infected among LGBTQ community  
+      Ha : There is a relationship between treatment and infected among LGBTQ community  
+
+Since the p-value (=0) < 0.05, reject H0 at 5% significant level.  
+Therefore at 5% significance level we can conclude that there is a relationship between treatment and infected among   
+LGBTQ community.  
+  
+Hypothesis on Fishers test : 
+
+      H0 : Probability of getting cured is the same whether LGBTQ community received a drug or placebo  
+      (True odd ratio is equal to 1)    
+      Ha: Probability of getting cured is not same whether LGBTQ community received a drug or placebo  
+      (True odd ratio is not equal to 1)    
+
+Since the p-value ( = 5.741e-06) < 0.05, reject H0 at 5% significant level.  
+Therefore at 5% significance level we can conclude that the true odd ration is not equal to 1.  
+That means probability of getting cured is not same whether LGBTQ community received a drug or placebo    
+
+   
+```{r}
+Drugdata<-filter(FinalData,DrugUser=="yes")
+```
 
 
 ### Graphical Results for DrugUsers
+```{r}
+barchartGC(~infected + treatment,data=Drugdata)
+barchartGC(~infected + treatment,data=Drugdata, type="percent")
 
-
-
+```
+   
+When comparing the percentage of the effect of treatment on the drug users who got well after the treatments, the drug users who got the placebo are higher than the drug users who got the new preventative vaccine. Because there are about 50% of drug users who got placebo and about 45% of drug users who got new preventative vaccine.  
+But, when comparing the drug users who still have covid, can observe a significant difference. There is less percentage of drug users who got the new preventative vaccine, about 35% , than the
+drug users who got placebo, about 67%.
+Even though the new preventative vaccine reduced the drug users who still have covid, it didn’t
+make higher the drug users who got well than placebo users. Therefore, cannot be concluded exactly that the new preventative vaccine does not or does affect the drug users.  
+    
 ###Numerical Summaries  for DrugUsers
-
-
-
+```{r}
+table1 <- xtabs(~infected + treatment, data=Drugdata)
+rowPerc(table1)
+colPerc(table1)
+```  
+    
+Among the drug users who still have covid after the treatment, there are 33.33% the new preventative  
+vaccine users and 66.67% placebo users.And also, among the drug users who got well after the treatment, there is 47.83% the new preventative vaccine users and 52.17% placebo users. Therefore, even placebo or new preventative vaccine did not show same pattern in still sick and cured drug users.Therefore, cannot be concluded exactly that the new preventative vaccine does not or does affect the drug users.    
+  
+Among the drug users who got new preventative vaccine (drug) as the treatment, there are 3.63% drug users who still have covid and 96.37% who got well.And also, among the drug users who got placebo as the treatment, there are 6.46% drug users who still have covid and 93.54% who got well.The percentages of drug users who got well after the treatments are higher than the percentage of drug users who still have covid, and the difference between percentages is higher among the new preventative vaccine used drug users than the placebo used drug users.   
+        
 ##Inferential  results for DrugUsers
+  
 
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+  
+Hypothesis on Chi-Square test :
 
+		H0 :    There is no relationship between treatment and infected among drug users  
+		Ha :    There is a relationship between treatment and infected among drug users  
+  	
+Since the p-value (=0.003)  <  0.05, reject H0 at 5% significant level.  
+Therefore at 5% significance level we can conclude that there is a relationship between treatment and infected among drug users.  
+       
+
+Hypothesis on Fishers test :  
+  
+		H0 :    Probability of getting cured is the same whether drug users received a drug  
+		          or placebo (True odd ratio is equal to 1)  
+		Ha :    Probability of getting cured is not same whether drug users received a drug   
+		          or placebo  (True odd ratio is not equal to 1)  
+  
+	
+Since the p-value ( = 0.002273)  <  0.05, reject H0 at 5% significant level.  
+Therefore at 5% significance level we can conclude that the true odd ration is not equal to 1.  
+That means probability of getting cured is not same whether drug users received a drug or placebo  
+  
+   
+    
 # Discussion and Conclusion
-
+  
+The conclusion here . 
+  
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
+
