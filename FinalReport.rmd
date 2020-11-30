@@ -261,12 +261,21 @@ Hypothesis on Fishers test :
 Since the p-value ( = 0.002273)  <  0.05, reject H0 at 5% significant level.  
 Therefore at 5% significance level we can conclude that the true odd ration is not equal to 1.  
 That means probability of getting cured is not same whether drug users received a drug or placebo  
-  
+    
    
     
 # Discussion and Conclusion
+    
+According to the Chi – square test and fishers test, all the three subgroups which are guys and gals, LGBTQ community and dug users show a relationship between infected and treatment.  
   
-The conclusion here . 
+Among gals, there can be seen as good effects of the drug, as the gals who got drug more tend to heal than the gals who got the placebo. Therefore, this new preventative vaccine is recommended to the gals.  
+  
+Among guys, there can not be seen as good effectiveness or the drug, as the guys who got placebo more tend to heal than the guys who got the drug. Therefore, this new preventative vaccine is not recommended to the guys.  
+  
+Among LGBTQ community also there can not be seen as good effects of the drug, as the LGBTQ  people who got placebo more tend to heal than the LGBTQ  people who got the drug. Therefore, this new preventative vaccine is not recommended to the LGBTQ  people.  
+
+Among drug users there can not be seen good or bad effects of the new preventative vaccine (drug), Therefore, can not give exact recommendation on this new preventative vaccine to the drug users.  
+    
   
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
-
+  
